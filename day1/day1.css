@@ -1,13 +1,25 @@
+ 
+:root {
+    --jeebly-red: #DC1D47;
+    --jeebly-blue: #163758;
+    --border-color: rgba(255,255,255,0.14);
+    --text-muted: #c0ccda;
+}
+ 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Segoe UI", Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+ 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
 }
  
 body {
-    background: #090e1b;
-    color: #f1f5f9;
+    background: var(--jeebly-blue);
+    color: #ffffff;
 }
  
 .app {
@@ -18,8 +30,8 @@ body {
 .sidebar {
     width: 265px;
     flex-shrink: 0;
-    background: #101a2e;
-    border-right: 1px solid #26344e;
+    background: var(--jeebly-blue);
+    border-right: 1px solid var(--border-color);
     padding: 24px 15px;
 }
  
@@ -28,7 +40,7 @@ body {
     align-items: center;
     gap: 12px;
     padding: 5px 10px 25px;
-    border-bottom: 1px solid #26344e;
+    border-bottom: 1px solid var(--border-color);
 }
  
 .brand-icon {
@@ -37,7 +49,7 @@ body {
     display: grid;
     place-items: center;
     border-radius: 12px;
-    background: linear-gradient(135deg,#6366f1,#06b6d4);
+    background: var(--jeebly-red);
     font-size: 22px;
     font-weight: bold;
 }
@@ -47,13 +59,13 @@ body {
 }
  
 .brand p {
-    color: #94a3b8;
+    color: var(--text-muted);
     font-size: 10px;
     margin-top: 4px;
 }
  
 .nav-title {
-    color: #64748b;
+    color: var(--text-muted);
     font-size: 11px;
     font-weight: bold;
     padding: 25px 12px 12px;
@@ -65,7 +77,7 @@ body {
     padding: 13px 12px;
     margin-bottom: 6px;
     border-radius: 9px;
-    color: #b8c4d8;
+    color: #ffffff;
     text-decoration: none;
     font-size: 13px;
     transition: 0.2s;
@@ -73,19 +85,21 @@ body {
  
 .nav-link:hover,
 .nav-link.active {
-    background: linear-gradient(100deg,#4f46e5,#6366f1);
+    background: var(--jeebly-red);
     color: white;
 }
  
 .main {
     flex: 1;
     min-width: 0;
+    display: flex;
+    flex-direction: column;
 }
  
 .topbar {
-    height: 72px;
-    background: #0e1728;
-    border-bottom: 1px solid #26344e;
+    min-height: 72px;
+    background: var(--jeebly-blue);
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -100,7 +114,7 @@ body {
 }
  
 .top-left span {
-    color: #94a3b8;
+    color: var(--text-muted);
     font-size: 13px;
 }
  
@@ -113,7 +127,7 @@ body {
 }
  
 .online {
-    color: #4ade80;
+    color: #ffffff;
     font-size: 12px;
 }
  
@@ -121,16 +135,18 @@ body {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: linear-gradient(135deg,#6366f1,#06b6d4);
+    background: var(--jeebly-red);
     display: grid;
     place-items: center;
     font-weight: bold;
 }
  
 .content {
+    flex: 1;
+    width: 100%;
     padding: 30px;
     max-width: 1450px;
-    margin: auto;
+    margin: 0 auto;
 }
  
 .page-heading {
@@ -144,8 +160,8 @@ body {
  
 .day-label {
     display: inline-block;
-    color: #22d3ee;
-    background: #164e63;
+    color: white;
+    background: var(--jeebly-red);
     padding: 7px 12px;
     border-radius: 6px;
     font-size: 11px;
@@ -159,23 +175,24 @@ body {
 }
  
 .page-heading p {
-    color: #94a3b8;
+    color: var(--text-muted);
     font-size: 14px;
 }
  
 .date {
     padding: 12px 16px;
-    background: #141f35;
-    border: 1px solid #26344e;
+    background: var(--jeebly-blue);
+    border: 1px solid var(--border-color);
     border-radius: 9px;
-    color: #cbd5e1;
+    color: white;
     font-size: 13px;
 }
  
 .welcome-card {
     padding: 27px;
-    background: linear-gradient(110deg,#312e81,#1e3a8a,#164e63);
-    border: 1px solid #4354a0;
+    background: var(--jeebly-blue);
+    border: 1px solid var(--jeebly-red);
+    border-left: 5px solid var(--jeebly-red);
     border-radius: 14px;
     display: flex;
     align-items: center;
@@ -190,7 +207,7 @@ body {
 }
  
 .welcome-card p {
-    color: #dbeafe;
+    color: #ffffff;
     font-size: 13px;
     line-height: 1.6;
 }
@@ -208,8 +225,9 @@ body {
  
 .stat-card {
     padding: 21px;
-    background: #141f35;
-    border: 1px solid #26344e;
+    background: var(--jeebly-blue);
+    border: 1px solid var(--border-color);
+    border-top: 3px solid var(--jeebly-red);
     border-radius: 13px;
 }
  
@@ -221,14 +239,17 @@ body {
     place-items: center;
     font-size: 20px;
     margin-bottom: 15px;
+    background: var(--jeebly-red);
 }
  
-.purple { background: #312e81; }
-.blue { background: #164e63; }
-.green { background: #14532d; }
+.purple,
+.blue,
+.green {
+    background: var(--jeebly-red);
+}
  
 .stat-card p {
-    color: #94a3b8;
+    color: var(--text-muted);
     font-size: 13px;
 }
  
@@ -238,15 +259,15 @@ body {
 }
  
 .stat-card span {
-    color: #64748b;
+    color: var(--text-muted);
     font-size: 11px;
     display: block;
     margin-top: 6px;
 }
  
 .panel {
-    background: #141f35;
-    border: 1px solid #26344e;
+    background: var(--jeebly-blue);
+    border: 1px solid var(--border-color);
     border-radius: 14px;
     padding: 23px;
     margin-bottom: 24px;
@@ -267,14 +288,14 @@ body {
 }
  
 .panel-heading p {
-    color: #94a3b8;
+    color: var(--text-muted);
     font-size: 12px;
     margin-top: 6px;
 }
  
 .task-status {
-    background: #78350f;
-    color: #fbbf24;
+    background: var(--jeebly-red);
+    color: white;
     padding: 7px 12px;
     border-radius: 20px;
     font-size: 11px;
@@ -290,8 +311,8 @@ body {
     align-items: flex-start;
     gap: 13px;
     padding: 15px;
-    background: #0d182c;
-    border: 1px solid #26344e;
+    background: rgba(0,0,0,0.12);
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     cursor: pointer;
 }
@@ -299,7 +320,7 @@ body {
 .task-item input {
     width: 17px;
     height: 17px;
-    accent-color: #6366f1;
+    accent-color: var(--jeebly-red);
     margin-top: 2px;
     cursor: pointer;
 }
@@ -311,18 +332,18 @@ body {
  
 .task-item small {
     display: block;
-    color: #94a3b8;
+    color: var(--text-muted);
     font-size: 11px;
     margin-top: 5px;
 }
  
 .task-item.completed {
-    border-color: #166534;
-    background: #102a26;
+    border-color: var(--jeebly-red);
+    background: rgba(220,29,71,0.12);
 }
  
 .task-item.completed strong {
-    color: #86efac;
+    color: white;
 }
  
 .progress-area {
@@ -338,7 +359,7 @@ body {
  
 .progress-track {
     height: 9px;
-    background: #27344b;
+    background: rgba(255,255,255,0.2);
     border-radius: 20px;
     overflow: hidden;
 }
@@ -346,12 +367,12 @@ body {
 .progress-fill {
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg,#6366f1,#22d3ee);
+    background: var(--jeebly-red);
     transition: width 0.3s;
 }
  
 .progress-area > p {
-    color: #94a3b8;
+    color: var(--text-muted);
     font-size: 11px;
     margin-top: 9px;
 }
@@ -367,14 +388,15 @@ body {
 }
  
 .learning-grid > div {
-    background: #0d182c;
-    border: 1px solid #26344e;
+    background: rgba(0,0,0,0.12);
+    border: 1px solid var(--border-color);
+    border-top: 2px solid var(--jeebly-red);
     padding: 18px;
     border-radius: 10px;
 }
  
 .learning-grid span {
-    color: #22d3ee;
+    color: #ffffff;
     font-weight: bold;
     font-size: 12px;
 }
@@ -385,20 +407,21 @@ body {
 }
  
 .learning-grid p {
-    color: #94a3b8;
+    color: var(--text-muted);
     font-size: 12px;
     line-height: 1.5;
 }
  
 footer {
+    margin-top: auto;
     padding: 22px 30px;
-    border-top: 1px solid #26344e;
+    border-top: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 15px;
-    color: #94a3b8;
+    color: var(--text-muted);
     font-size: 12px;
 }
  
@@ -409,21 +432,32 @@ footer {
  
 .previous-btn,
 .next-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
     padding: 11px 17px;
     border-radius: 8px;
     text-decoration: none;
     font-size: 12px;
     font-weight: bold;
+    transition: 0.2s;
 }
  
 .previous-btn {
-    background: #263653;
+    background: rgba(255,255,255,0.12);
     color: white;
 }
  
 .next-btn {
-    background: #4f46e5;
+    background: var(--jeebly-red);
     color: white;
+}
+ 
+.previous-btn:hover,
+.next-btn:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
 }
  
 .sidebar.closed {
@@ -462,3 +496,4 @@ footer {
         padding: 18px;
     }
 }
+ 
