@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeebly Logistics | Day 7 Testing</title>
+  <link rel="stylesheet" href="day7.css">
+</head>
+<body>
+ 
+<div class="layout">
+  <aside class="sidebar">
+    <h2>JEEBLY LOGISTICS</h2>
+    <p class="side-title">LEARNING PLAN</p>
+    <a href="../index.html">Dashboard</a>
+    <a href="../day1/day1.html">Day 1 - Setup</a>
+    <a href="../day2/day2.html">Day 2 - Employee List</a>
+    <a href="../day3/day3.html">Day 3 - Add Employee</a>
+    <a href="../day4/day4.html">Day 4 - Edit Employee</a>
+    <a href="../day5/day5.html">Day 5 - Delete Employee</a>
+    <a href="../day6/day6.html">Day 6 - Search & Filter</a>
+    <a class="active" href="day7.html">Day 7 - Testing</a>
+  </aside>
+ 
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <p class="small">FINAL DAY / PROJECT REVIEW</p>
+        <h1>Testing & Deployment</h1>
+        <p>Verify your Employee Management System.</p>
+      </div>
+      <span id="currentDate"></span>
+    </header>
+ 
+    <section class="hero">
+      <div>
+        <p class="small">DAY 07</p>
+        <h2>Final Project Testing</h2>
+        <p>Check all features, verify API connection and prepare your project for review.</p>
+      </div>
+      <div class="hero-icon">✓</div>
+    </section>
+ 
+    <section class="stats">
+      <div class="stat-card">
+        <p>Total Tests</p>
+        <h2 id="totalTests">0</h2>
+      </div>
+      <div class="stat-card">
+        <p>Completed</p>
+        <h2 id="completedTests">0</h2>
+      </div>
+      <div class="stat-card">
+        <p>Remaining</p>
+        <h2 id="remainingTests">0</h2>
+      </div>
+      <div class="stat-card">
+        <p>Progress</p>
+        <h2 id="progressPercent">0%</h2>
+      </div>
+    </section>
+ 
+    <section class="panel">
+      <div class="panel-heading">
+        <div>
+          <h2>API Connection</h2>
+          <p>Check whether the employee backend is reachable.</p>
+        </div>
+        <button id="checkApiBtn">Check API</button>
+      </div>
+      <div class="api-status">
+        <span id="apiDot" class="dot"></span>
+        <span id="apiMessage">Not checked yet</span>
+      </div>
+      <p id="employeeCount">Employee records: --</p>
+    </section>
+ 
+    <section class="panel">
+      <h2>Project Testing Checklist</h2>
+      <p class="muted">Har feature ko manually test karke checkbox tick karo.</p>
+ 
+      <div id="checklist" class="checklist">
+        <label><input type="checkbox"> Day 1: Dashboard opens correctly</label>
+        <label><input type="checkbox"> Day 2: Employee list loads from API</label>
+        <label><input type="checkbox"> Day 3: Add employee works</label>
+        <label><input type="checkbox"> Day 4: Edit employee works</label>
+        <label><input type="checkbox"> Day 5: Delete employee works</label>
+        <label><input type="checkbox"> Day 6: Search and filters work</label>
+        <label><input type="checkbox"> Refresh button works</label>
+        <label><input type="checkbox"> Previous and Next navigation works</label>
+        <label><input type="checkbox"> No errors in browser Console</label>
+        <label><input type="checkbox"> Website layout works on mobile</label>
+        <label><input type="checkbox"> Live deployed URL opens correctly</label>
+      </div>
+ 
+      <div class="progress-track">
+        <div id="progressBar"></div>
+      </div>
+      <p id="progressText">0 of 11 tests completed</p>
+      <button class="reset-btn" id="resetBtn">Reset Checklist</button>
+    </section>
+ 
+    <section class="panel">
+      <h2>Final Review Notes</h2>
+      <ul>
+        <li>Keep frontend and backend running during local testing.</li>
+        <li>Check all CRUD operations with test employee records.</li>
+        <li>Replace localhost API URL with the deployed backend URL before deployment.</li>
+        <li>Test the deployed website on desktop and mobile.</li>
+        <li>Share the final GitHub repository and live URL with Sir.</li>
+      </ul>
+    </section>
+ 
+    <footer>
+      <a href="../day6/day6.html">← Previous Day</a>
+      <a href="../index.html">Back to Dashboard</a>
+    </footer>
+  </main>
+</div>
+ 
+<script src="day7.js"></script>
+</body>
+</html>
