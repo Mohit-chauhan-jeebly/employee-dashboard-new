@@ -2,393 +2,424 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jeebly Logistics | Employee Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeebly Logistics | Employee Dashboard</title>
  
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
  
-    body {
-      font-family: Arial, sans-serif;
-      background: #0b1120;
-      color: #e5e7eb;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
  
-    .layout {
-      display: flex;
-      min-height: 100vh;
-    }
+        :root {
+            --jeebly-red: #DC1D47;
+            --jeebly-blue: #163758;
+            --white: #ffffff;
+            --background: #f4f6f9;
+            --text: #263449;
+            --muted: #718096;
+            --border: #e2e8f0;
+        }
  
-    .sidebar {
-      width: 245px;
-      background: #111827;
-      padding: 25px 15px;
-      flex-shrink: 0;
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--background);
+            color: var(--text);
+        }
  
-    .sidebar h2 {
-      font-size: 19px;
-      margin-bottom: 35px;
-      color: white;
-    }
+        h1, h2, h3, .day-number {
+            font-family: 'Montserrat', sans-serif;
+        }
  
-    .side-title {
-      font-size: 11px;
-      color: #8492a8;
-      margin-bottom: 12px;
-      letter-spacing: 1px;
-    }
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
  
-    .sidebar a {
-      display: block;
-      text-decoration: none;
-      color: #aab5c6;
-      padding: 13px;
-      border-radius: 7px;
-      margin-bottom: 6px;
-      font-size: 14px;
-    }
+        .sidebar {
+            width: 245px;
+            background: var(--jeebly-blue);
+            padding: 25px 15px;
+            flex-shrink: 0;
+        }
  
-    .sidebar a:hover,
-    .sidebar a.active {
-      background: #263449;
-      color: white;
-    }
+        .sidebar h2 {
+            font-size: 19px;
+            margin-bottom: 35px;
+            color: var(--white);
+            font-weight: 800;
+        }
  
-    .main {
-      flex: 1;
-      padding: 30px;
-      min-width: 0;
-    }
+        .side-title {
+            font-size: 11px;
+            color: #b7c7d8;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
  
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-      gap: 15px;
-    }
+        .sidebar a {
+            display: block;
+            text-decoration: none;
+            color: #d3deea;
+            padding: 13px;
+            border-radius: 7px;
+            margin-bottom: 6px;
+            font-size: 13px;
+            transition: 0.2s;
+        }
  
-    .topbar h1 {
-      font-size: 27px;
-      margin-bottom: 8px;
-    }
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: var(--jeebly-red);
+            color: var(--white);
+        }
  
-    .topbar p {
-      color: #9ca3af;
-      font-size: 14px;
-    }
+        .main {
+            flex: 1;
+            padding: 30px;
+            min-width: 0;
+        }
  
-    #currentDate {
-      color: #9ca3af;
-      font-size: 13px;
-    }
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 15px;
+        }
  
-    .welcome {
-      background: linear-gradient(120deg, #172b45, #243c57);
-      border: 1px solid #344b65;
-      padding: 35px;
-      border-radius: 14px;
-      margin-bottom: 25px;
-    }
+        .topbar h1 {
+            font-size: 27px;
+            margin-bottom: 8px;
+            color: var(--jeebly-blue);
+            font-weight: 700;
+        }
  
-    .welcome .small {
-      color: #60a5fa;
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
+        .topbar p {
+            color: var(--muted);
+            font-size: 14px;
+        }
  
-    .welcome h2 {
-      font-size: 26px;
-      margin: 13px 0;
-    }
+        #currentDate {
+            color: var(--jeebly-blue);
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
  
-    .welcome p {
-      color: #c0ccda;
-      line-height: 1.7;
-      max-width: 650px;
-    }
+        .welcome {
+            background: linear-gradient(120deg, var(--jeebly-blue), #254d70);
+            border: 1px solid var(--jeebly-blue);
+            padding: 35px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+            color: var(--white);
+        }
  
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 17px;
-      margin-bottom: 28px;
-    }
+        .welcome .small {
+            color: #ffb4c4;
+            font-size: 12px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
  
-    .stat-card {
-      background: #151f30;
-      border: 1px solid #263449;
-      padding: 23px;
-      border-radius: 12px;
-    }
+        .welcome h2 {
+            font-size: 26px;
+            margin: 13px 0;
+            font-weight: 700;
+        }
  
-    .stat-card p {
-      color: #9ca3af;
-      font-size: 13px;
-    }
+        .welcome p {
+            color: #e1eaf3;
+            line-height: 1.7;
+            max-width: 650px;
+        }
  
-    .stat-card h2 {
-      margin-top: 12px;
-      font-size: 26px;
-    }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 17px;
+            margin-bottom: 28px;
+        }
  
-    .section-heading {
-      margin-bottom: 17px;
-    }
+        .stat-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--jeebly-red);
+            padding: 23px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(22, 55, 88, 0.05);
+        }
  
-    .section-heading h2 {
-      font-size: 21px;
-      margin-bottom: 7px;
-    }
+        .stat-card p {
+            color: var(--muted);
+            font-size: 13px;
+        }
  
-    .section-heading p {
-      color: #9ca3af;
-      font-size: 13px;
-    }
+        .stat-card h2 {
+            margin-top: 12px;
+            font-size: 26px;
+            color: var(--jeebly-blue);
+        }
  
-    .days {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 17px;
-    }
+        .section-heading {
+            margin-bottom: 17px;
+        }
  
-    .day-card {
-      background: #151f30;
-      border: 1px solid #263449;
-      padding: 22px;
-      border-radius: 12px;
-      transition: 0.2s;
-    }
+        .section-heading h2 {
+            font-size: 21px;
+            margin-bottom: 7px;
+            color: var(--jeebly-blue);
+        }
  
-    .day-card:hover {
-      border-color: #4389e8;
-      transform: translateY(-3px);
-    }
+        .section-heading p {
+            color: var(--muted);
+            font-size: 13px;
+        }
  
-    .day-number {
-      color: #60a5fa;
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
+        .days {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 17px;
+        }
  
-    .day-card h3 {
-      font-size: 18px;
-      margin: 12px 0 9px;
-    }
+        .day-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 22px;
+            border-radius: 12px;
+            transition: 0.2s;
+            box-shadow: 0 3px 12px rgba(22, 55, 88, 0.04);
+        }
  
-    .day-card p {
-      color: #9ca3af;
-      font-size: 13px;
-      line-height: 1.6;
-      min-height: 42px;
-    }
+        .day-card:hover {
+            border-color: var(--jeebly-red);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(22, 55, 88, 0.09);
+        }
  
-    .day-card a {
-      display: inline-block;
-      margin-top: 18px;
-      text-decoration: none;
-      color: #60a5fa;
-      font-size: 14px;
-      font-weight: bold;
-    }
+        .day-number {
+            color: var(--jeebly-red);
+            font-size: 12px;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
  
-    .day-card a:hover {
-      color: white;
-    }
+        .day-card h3 {
+            font-size: 18px;
+            margin: 12px 0 9px;
+            color: var(--jeebly-blue);
+        }
  
-    footer {
-      color: #64748b;
-      font-size: 12px;
-      text-align: center;
-      margin-top: 35px;
-      padding: 20px;
-    }
+        .day-card p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.6;
+            min-height: 42px;
+        }
  
-    @media (max-width: 850px) {
-      .stats {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
+        .day-card a {
+            display: inline-block;
+            margin-top: 18px;
+            text-decoration: none;
+            color: var(--jeebly-red);
+            font-size: 14px;
+            font-weight: 600;
+        }
  
-    @media (max-width: 600px) {
-      .layout {
-        display: block;
-      }
+        .day-card a:hover {
+            color: var(--jeebly-blue);
+        }
  
-      .sidebar {
-        width: 100%;
-      }
+        footer {
+            color: var(--muted);
+            font-size: 12px;
+            text-align: center;
+            margin-top: 35px;
+            padding: 20px;
+        }
  
-      .main {
-        padding: 18px;
-      }
+        @media (max-width: 850px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
  
-      .topbar h1 {
-        font-size: 22px;
-      }
+        @media (max-width: 600px) {
+            .layout {
+                display: block;
+            }
  
-      .welcome {
-        padding: 23px;
-      }
+            .sidebar {
+                width: 100%;
+            }
  
-      .welcome h2 {
-        font-size: 22px;
-      }
+            .main {
+                padding: 18px;
+            }
  
-      .stats,
-      .days {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+            .topbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+ 
+            .topbar h1 {
+                font-size: 22px;
+            }
+ 
+            .welcome {
+                padding: 23px;
+            }
+ 
+            .welcome h2 {
+                font-size: 22px;
+            }
+ 
+            .stats,
+            .days {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
  
 <body>
  
 <div class="layout">
  
-  <aside class="sidebar">
-    <h2>JEEBLY LOGISTICS</h2>
+    <aside class="sidebar">
+        <h2>JEEBLY LOGISTICS</h2>
  
-    <p class="side-title">MAIN MENU</p>
+        <p class="side-title">MAIN MENU</p>
  
-    <a href="index.html" class="active">Dashboard</a>
+        <a href="index.html" class="active">Dashboard</a>
  
-    <p class="side-title" style="margin-top:25px;">LEARNING PLAN</p>
+        <p class="side-title" style="margin-top:25px;">LEARNING PLAN</p>
  
-    <a href="day1/day1.html">Day 1 - Setup</a>
-    <a href="day2/day2.html">Day 2 - Employee List</a>
-    <a href="day3/day3.html">Day 3 - Add Employee</a>
-    <a href="day4/day4.html">Day 4 - Edit Employee</a>
-    <a href="day5/day5.html">Day 5 - Delete Employee</a>
-    <a href="day6/day6.html">Day 6 - Search & Filter</a>
-    <a href="day7/day7.html">Day 7 - Testing</a>
-  </aside>
+        <a href="day1/day1.html">Day 1 - Setup</a>
+        <a href="day2/day2.html">Day 2 - Employee List</a>
+        <a href="day3/day3.html">Day 3 - Add Employee</a>
+        <a href="day4/day4.html">Day 4 - Edit Employee</a>
+        <a href="day5/day5.html">Day 5 - Delete Employee</a>
+        <a href="day6/day6.html">Day 6 - Search & Filter</a>
+        <a href="day7/day7.html">Day 7 - Testing</a>
+    </aside>
  
-  <main class="main">
+    <main class="main">
  
-    <header class="topbar">
-      <div>
-        <h1>Employee Management Dashboard</h1>
-        <p>Welcome to Jeebly Logistics Learning Project</p>
-      </div>
+        <header class="topbar">
+            <div>
+                <h1>Employee Management Dashboard</h1>
+                <p>Welcome to Jeebly Logistics Learning Project</p>
+            </div>
  
-      <span id="currentDate"></span>
-    </header>
+            <span id="currentDate"></span>
+        </header>
  
-    <section class="welcome">
-      <p class="small">WELCOME TO JEEBLY LOGISTICS</p>
+        <section class="welcome">
+            <p class="small">WELCOME TO JEEBLY LOGISTICS</p>
  
-      <h2>Employee Management System</h2>
+            <h2>Employee Management System</h2>
  
-      <p>
-        This project is designed to manage employee records,
-        add new employees, update information, delete records,
-        and search employees using a simple dashboard.
-      </p>
-    </section>
+            <p>
+                This project is designed to manage employee records,
+                add new employees, update information, delete records,
+                and search employees using a simple dashboard.
+            </p>
+        </section>
  
-    <section class="stats">
+        <section class="stats">
  
-      <div class="stat-card">
-        <p>Learning Days</p>
-        <h2>07</h2>
-      </div>
+            <div class="stat-card">
+                <p>Learning Days</p>
+                <h2>07</h2>
+            </div>
  
-      <div class="stat-card">
-        <p>Project Modules</p>
-        <h2>07</h2>
-      </div>
+            <div class="stat-card">
+                <p>Project Modules</p>
+                <h2>07</h2>
+            </div>
  
-      <div class="stat-card">
-        <p>Project Status</p>
-        <h2 style="color:#22c55e;">Ready</h2>
-      </div>
+            <div class="stat-card">
+                <p>Project Status</p>
+                <h2 style="color:#DC1D47;">Ready</h2>
+            </div>
  
-    </section>
+        </section>
  
-    <section>
-      <div class="section-heading">
-        <h2>Learning Plan</h2>
-        <p>Select a day to open its employee management module.</p>
-      </div>
+        <section>
+            <div class="section-heading">
+                <h2>Learning Plan</h2>
+                <p>Select a day to open its employee management module.</p>
+            </div>
  
-      <div class="days">
+            <div class="days">
  
-        <div class="day-card">
-          <span class="day-number">DAY 01</span>
-          <h3>Dashboard Setup</h3>
-          <p>Learn project structure, HTML layout and dashboard basics.</p>
-          <a href="day1/day1.html">Open Day 1 →</a>
-        </div>
+                <div class="day-card">
+                    <span class="day-number">DAY 01</span>
+                    <h3>Dashboard Setup</h3>
+                    <p>Learn project structure, HTML layout and dashboard basics.</p>
+                    <a href="day1/day1.html">Open Day 1 →</a>
+                </div>
  
-        <div class="day-card">
-          <span class="day-number">DAY 02</span>
-          <h3>Employee List</h3>
-          <p>Fetch employee records from API and display them in a table.</p>
-          <a href="day2/day2.html">Open Day 2 →</a>
-        </div>
+                <div class="day-card">
+                    <span class="day-number">DAY 02</span>
+                    <h3>Employee List</h3>
+                    <p>Fetch employee records from API and display them in a table.</p>
+                    <a href="day2/day2.html">Open Day 2 →</a>
+                </div>
  
-        <div class="day-card">
-          <span class="day-number">DAY 03</span>
-          <h3>Add Employee</h3>
-          <p>Create an employee form and save new employee records.</p>
-          <a href="day3/day3.html">Open Day 3 →</a>
-        </div>
+                <div class="day-card">
+                    <span class="day-number">DAY 03</span>
+                    <h3>Add Employee</h3>
+                    <p>Create an employee form and save new employee records.</p>
+                    <a href="day3/day3.html">Open Day 3 →</a>
+                </div>
  
-        <div class="day-card">
-          <span class="day-number">DAY 04</span>
-          <h3>Edit Employee</h3>
-          <p>Update existing employee details using the API.</p>
-          <a href="day4/day4.html">Open Day 4 →</a>
-        </div>
+                <div class="day-card">
+                    <span class="day-number">DAY 04</span>
+                    <h3>Edit Employee</h3>
+                    <p>Update existing employee details using the API.</p>
+                    <a href="day4/day4.html">Open Day 4 →</a>
+                </div>
  
-        <div class="day-card">
-          <span class="day-number">DAY 05</span>
-          <h3>Delete Employee</h3>
-          <p>Remove employee records and refresh the employee table.</p>
-          <a href="day5/day5.html">Open Day 5 →</a>
-        </div>
+                <div class="day-card">
+                    <span class="day-number">DAY 05</span>
+                    <h3>Delete Employee</h3>
+                    <p>Remove employee records and refresh the employee table.</p>
+                    <a href="day5/day5.html">Open Day 5 →</a>
+                </div>
  
-        <div class="day-card">
-          <span class="day-number">DAY 06</span>
-          <h3>Search & Filter</h3>
-          <p>Search employees and sort or filter records.</p>
-          <a href="day6/day6.html">Open Day 6 →</a>
-        </div>
+                <div class="day-card">
+                    <span class="day-number">DAY 06</span>
+                    <h3>Search & Filter</h3>
+                    <p>Search employees and sort or filter records.</p>
+                    <a href="day6/day6.html">Open Day 6 →</a>
+                </div>
  
-        <div class="day-card">
-          <span class="day-number">DAY 07</span>
-          <h3>Testing & Deployment</h3>
-          <p>Test all modules, verify the API and prepare for deployment.</p>
-          <a href="day7/day7.html">Open Day 7 →</a>
-        </div>
+                <div class="day-card">
+                    <span class="day-number">DAY 07</span>
+                    <h3>Testing & Deployment</h3>
+                    <p>Test all modules, verify the API and prepare for deployment.</p>
+                    <a href="day7/day7.html">Open Day 7 →</a>
+                </div>
  
-      </div>
-    </section>
+            </div>
+        </section>
  
-    <footer>
-      Jeebly Logistics | Employee Management Learning Project
-    </footer>
+        <footer>
+            Jeebly Logistics | Employee Management Learning Project
+        </footer>
  
-  </main>
+    </main>
 </div>
  
 <script>
-  document.getElementById("currentDate").textContent =
-    new Date().toLocaleDateString("en-IN", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric"
-    });
-</script>
- 
-</body>
-</html>
+    document.getElementById("currentDate").textContent 
  
